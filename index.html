@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MiniShop - Website bán hàng mini</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo">Mini<span>Shop.</span></div>
+
+      <nav>
+        <button class="nav-btn active" data-page="store">Cửa hàng</button>
+        <button class="nav-btn" data-page="products">Sản phẩm</button>
+        <button class="nav-btn" data-page="orders">Đơn hàng</button>
+      </nav>
+
+      <div class="header-cart">
+        🛒 Giỏ hàng
+        <span id="cart-count">0</span>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- TRANG CỬA HÀNG -->
+      <section id="store-page" class="page active">
+        <div class="hero">
+          <div>
+            <p class="subtitle">WELCOME TO MINISHOP</p>
+            <h1>Mua sắm dễ dàng,<br />trải nghiệm tuyệt vời.</h1>
+            <p>Khám phá những sản phẩm dành cho bạn.</p>
+          </div>
+        </div>
+
+        <div class="section-heading">
+          <div>
+            <h2>Sản phẩm nổi bật</h2>
+            <p>Khám phá các sản phẩm của chúng tôi</p>
+          </div>
+
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Tìm kiếm sản phẩm..."
+          />
+        </div>
+
+        <div id="category-list" class="categories">
+          <button class="category-btn active" data-category="Tất cả">
+            Tất cả
+          </button>
+          <button class="category-btn" data-category="Điện tử">Điện tử</button>
+          <button class="category-btn" data-category="Thời trang">
+            Thời trang
+          </button>
+          <button class="category-btn" data-category="Phụ kiện">
+            Phụ kiện
+          </button>
+        </div>
+
+        <div id="product-list" class="product-grid"></div>
+
+        <!-- GIỎ HÀNG -->
+        <div class="cart-section">
+          <h2>🛒 Giỏ hàng của bạn</h2>
+
+          <div id="cart-list"></div>
+
+          <div class="cart-total">
+            <h3>Tổng tiền: <span id="cart-total">0đ</span></h3>
+          </div>
+
+          <div class="checkout-form">
+            <h3>Thông tin đặt hàng</h3>
+
+            <input
+              type="text"
+              id="customer-name"
+              placeholder="Họ và tên khách hàng"
+            />
+
+            <input type="tel" id="customer-phone" placeholder="Số điện thoại" />
+
+            <textarea
+              id="customer-address"
+              placeholder="Địa chỉ giao hàng"
+            ></textarea>
+
+            <button id="checkout-btn" class="primary-btn">Đặt hàng ngay</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- TRANG QUẢN LÝ SẢN PHẨM -->
+      <section id="products-page" class="page">
+        <div class="section-heading">
+          <div>
+            <h2>Quản lý sản phẩm</h2>
+            <p>Thêm, chỉnh sửa và xóa sản phẩm</p>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <h3 id="form-title">Thêm sản phẩm mới</h3>
+
+          <form id="product-form">
+            <input type="hidden" id="product-id" />
+
+            <div class="form-grid">
+              <div>
+                <label>Tên sản phẩm</label>
+                <input
+                  type="text"
+                  id="product-name"
+                  placeholder="Nhập tên sản phẩm"
+                  required
+                />
+              </div>
+
+              <div>
+                <label>Giá sản phẩm (VNĐ)</label>
+                <input
+                  type="number"
+                  id="product-price"
+                  placeholder="Nhập giá"
+                  min="1"
+                  required
+                />
+              </div>
+
+              <div>
+                <label>Danh mục</label>
+                <select id="product-category" required>
+                  <option value="Điện tử">Điện tử</option>
+                  <option value="Thời trang">Thời trang</option>
+                  <option value="Phụ kiện">Phụ kiện</option>
+                </select>
+              </div>
+
+              <div>
+                <label>Số lượng tồn kho</label>
+                <input
+                  type="number"
+                  id="product-stock"
+                  placeholder="Nhập số lượng"
+                  min="0"
+                  required
+                />
+              </div>
+
+              <div class="full-width">
+                <label>Link hình ảnh</label>
+                <input
+                  type="url"
+                  id="product-image"
+                  placeholder="https://example.com/image.jpg"
+                />
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="primary-btn">Lưu sản phẩm</button>
+
+              <button type="button" id="cancel-edit" class="secondary-btn">
+                Hủy
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div class="table-card">
+          <h3>Danh sách sản phẩm</h3>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Sản phẩm</th>
+                  <th>Danh mục</th>
+                  <th>Giá</th>
+                  <th>Tồn kho</th>
+                  <th>Thao tác</th>
+                </tr>
+              </thead>
+
+              <tbody id="product-table"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TRANG QUẢN LÝ ĐƠN HÀNG -->
+      <section id="orders-page" class="page">
+        <div class="section-heading">
+          <div>
+            <h2>Quản lý đơn hàng</h2>
+            <p>Theo dõi và cập nhật trạng thái đơn hàng</p>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <p>Tổng đơn hàng</p>
+            <h2 id="total-orders">0</h2>
+          </div>
+
+          <div class="stat-card">
+            <p>Chờ xác nhận</p>
+            <h2 id="pending-orders">0</h2>
+          </div>
+
+          <div class="stat-card">
+            <p>Đã giao hàng</p>
+            <h2 id="completed-orders">0</h2>
+          </div>
+
+          <div class="stat-card">
+            <p>Doanh thu</p>
+            <h2 id="total-revenue">0đ</h2>
+          </div>
+        </div>
+
+        <div class="table-card">
+          <h3>Danh sách đơn hàng</h3>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Mã đơn</th>
+                  <th>Khách hàng</th>
+                  <th>Ngày đặt</th>
+                  <th>Tổng tiền</th>
+                  <th>Trạng thái</th>
+                </tr>
+              </thead>
+
+              <tbody id="order-table"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2026 MiniShop. Personal Project - HTML, CSS & JavaScript.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

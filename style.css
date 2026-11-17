@@ -1,0 +1,582 @@
+/* =========================
+   1. CÀI ĐẶT CHUNG
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f6f7fb;
+  color: #25283d;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 30px 20px;
+}
+
+/* =========================
+   2. HEADER
+========================= */
+
+.header {
+  background: white;
+  padding: 18px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 12px #0000000a;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: bold;
+  color: #25283d;
+}
+
+.logo span {
+  color: #7058d9;
+}
+
+nav {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  padding: 10px 15px;
+  color: #666;
+  font-size: 14px;
+  border-radius: 8px;
+}
+
+.nav-btn.active {
+  background: #eeeaff;
+  color: #7058d9;
+  font-weight: bold;
+}
+
+.header-cart {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.header-cart span {
+  background: #7058d9;
+  color: white;
+  padding: 5px 9px;
+  border-radius: 50%;
+}
+
+/* =========================
+   3. CHUYỂN TRANG
+========================= */
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
+/* =========================
+   4. BANNER
+========================= */
+
+.hero {
+  background: linear-gradient(120deg, #e9e4ff, #f7eaff);
+  border-radius: 18px;
+  padding: 65px 45px;
+  margin-bottom: 40px;
+}
+
+.subtitle {
+  color: #7058d9;
+  font-weight: bold;
+  font-size: 13px;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+}
+
+.hero h1 {
+  font-size: 38px;
+  line-height: 1.4;
+  margin-bottom: 15px;
+}
+
+.hero p:last-child {
+  color: #666;
+}
+
+/* =========================
+   5. TIÊU ĐỀ
+========================= */
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.section-heading h2 {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.section-heading p {
+  color: #888;
+  font-size: 14px;
+}
+
+/* =========================
+   6. INPUT
+========================= */
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  background: white;
+  font-size: 14px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #7058d9;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 85px;
+}
+
+#search-input {
+  max-width: 280px;
+}
+
+/* =========================
+   7. DANH MỤC
+========================= */
+
+.categories {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.category-btn {
+  border: 1px solid #ddd;
+  background: white;
+  padding: 10px 18px;
+  border-radius: 20px;
+}
+
+.category-btn.active {
+  background: #7058d9;
+  color: white;
+  border-color: #7058d9;
+}
+
+/* =========================
+   8. DANH SÁCH SẢN PHẨM
+========================= */
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.product-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 15px #00000008;
+  transition: 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px #00000012;
+}
+
+.product-card img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  background: #eee;
+}
+
+.product-info {
+  padding: 16px;
+}
+
+.product-info small {
+  color: #888;
+}
+
+.product-info h3 {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.price {
+  color: #7058d9;
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.product-info button {
+  width: 100%;
+}
+
+.empty-message {
+  color: #888;
+  padding: 20px 0;
+  text-align: center;
+  grid-column: 1 / -1;
+}
+
+/* =========================
+   9. BUTTON
+========================= */
+
+.primary-btn {
+  background: #7058d9;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.primary-btn:hover {
+  background: #5840c0;
+}
+
+.primary-btn:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+.secondary-btn {
+  background: #eee;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+}
+
+/* =========================
+   10. GIỎ HÀNG
+========================= */
+
+.cart-section {
+  background: white;
+  padding: 25px;
+  margin-top: 45px;
+  border-radius: 14px;
+}
+
+.cart-section h2 {
+  margin-bottom: 20px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-item p {
+  font-size: 14px;
+  margin-top: 5px;
+  color: #888;
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quantity-control button {
+  border: none;
+  background: #eeeaff;
+  padding: 7px 11px;
+  border-radius: 5px;
+}
+
+.remove-btn,
+.delete-btn {
+  background: #ffe8e8;
+  color: #e34b4b;
+  border: none;
+  padding: 8px 10px;
+  border-radius: 6px;
+}
+
+.cart-total {
+  text-align: right;
+  margin: 20px 0;
+  color: #7058d9;
+}
+
+.checkout-form {
+  max-width: 500px;
+  display: grid;
+  gap: 12px;
+}
+
+.checkout-form h3 {
+  color: #25283d;
+}
+
+/* =========================
+   11. FORM SẢN PHẨM
+========================= */
+
+.form-card,
+.table-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  box-shadow: 0 3px 15px #00000008;
+}
+
+.form-card h3,
+.table-card h3 {
+  margin-bottom: 20px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.form-grid label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* =========================
+   12. BẢNG DỮ LIỆU
+========================= */
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 650px;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+th {
+  background: #f8f7fc;
+  color: #666;
+}
+
+td button {
+  margin: 3px;
+}
+
+.edit-btn {
+  background: #eeeaff;
+  color: #7058d9;
+  border: none;
+  padding: 8px 10px;
+  border-radius: 6px;
+}
+
+/* =========================
+   13. THỐNG KÊ
+========================= */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background: white;
+  padding: 22px;
+  border-radius: 12px;
+  box-shadow: 0 3px 15px #00000008;
+}
+
+.stat-card p {
+  color: #888;
+  font-size: 14px;
+}
+
+.stat-card h2 {
+  color: #7058d9;
+  margin-top: 12px;
+  font-size: 23px;
+}
+
+.status-select {
+  padding: 8px;
+  min-width: 130px;
+}
+
+/* =========================
+   14. FOOTER
+========================= */
+
+footer {
+  text-align: center;
+  color: #888;
+  padding: 25px;
+  font-size: 13px;
+}
+
+/* =========================
+   15. RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  nav {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .hero {
+    padding: 35px 20px;
+  }
+
+  .hero h1 {
+    font-size: 27px;
+  }
+
+  .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  #search-input {
+    max-width: 100%;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .product-card img {
+    height: 130px;
+  }
+
+  .product-info {
+    padding: 10px;
+  }
+
+  .product-info h3 {
+    font-size: 14px;
+  }
+
+  .price {
+    font-size: 15px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .full-width {
+    grid-column: auto;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .stat-card {
+    padding: 15px;
+  }
+
+  .cart-section {
+    padding: 15px;
+  }
+
+  .cart-item {
+    flex-wrap: wrap;
+  }
+}
